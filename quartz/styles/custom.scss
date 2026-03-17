@@ -1,3 +1,112 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+// ─── Sentiment Filter Buttons ────────────────────────────────────────────────
+.claim-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 1.25rem;
+
+  .filter-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    border: 1.5px solid var(--gray);
+    background: transparent;
+    color: var(--darkgray);
+    font-size: 0.85rem;
+    font-family: var(--bodyFont);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+
+    &:hover {
+      background: var(--lightgray);
+      border-color: var(--secondary);
+    }
+
+    &.active {
+      background: var(--secondary);
+      border-color: var(--secondary);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    &[data-filter="正面"].active {
+      background: #2e7d32;
+      border-color: #2e7d32;
+    }
+
+    &[data-filter="負面"].active {
+      background: #c62828;
+      border-color: #c62828;
+    }
+
+    &[data-filter="中立"].active {
+      background: #5f6368;
+      border-color: #5f6368;
+    }
+  }
+}
+
+// ─── Claim Cards ─────────────────────────────────────────────────────────────
+.claim {
+  border-left: 4px solid var(--gray);
+  background: var(--light);
+  border-radius: 0 6px 6px 0;
+  padding: 0.65rem 1rem;
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  transition: opacity 0.2s;
+
+  &[data-sentiment="正面"] {
+    border-left-color: #2e7d32;
+    background: rgba(46, 125, 50, 0.06);
+  }
+
+  &[data-sentiment="負面"] {
+    border-left-color: #c62828;
+    background: rgba(198, 40, 40, 0.06);
+  }
+
+  &[data-sentiment="中立"] {
+    border-left-color: #5f6368;
+    background: rgba(95, 99, 104, 0.06);
+  }
+
+  code {
+    font-size: 0.8em;
+    background: var(--lightgray);
+    padding: 0.1em 0.4em;
+    border-radius: 3px;
+  }
+}
+
+// ─── Sentiment / Topic Tag Badges ────────────────────────────────────────────
+.tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  padding: 0.1em 0.5em;
+  border-radius: 4px;
+  margin-left: 0.25rem;
+  background: var(--lightgray);
+  color: var(--darkgray);
+  font-weight: 500;
+  white-space: nowrap;
+
+  &.positive {
+    background: rgba(46, 125, 50, 0.15);
+    color: #2e7d32;
+  }
+
+  &.negative {
+    background: rgba(198, 40, 40, 0.15);
+    color: #c62828;
+  }
+
+  &.neutral {
+    background: rgba(95, 99, 104, 0.15);
+    color: #5f6368;
+  }
+}
